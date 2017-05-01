@@ -1,5 +1,4 @@
 # Brainfuck
-A Brainfuck interpreter in Swift 3.1.
 
 `Brainfuck.swift` is a flexible Brainfuck interpreter in Swift 3.1.
 
