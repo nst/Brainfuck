@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		039F7F5E1EB879550039438E /* Brainloller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F7F5D1EB879550039438E /* Brainloller.swift */; };
+		039F7F631EB89F460039438E /* fibonacci.png in Resources */ = {isa = PBXBuildFile; fileRef = 039F7F621EB89F460039438E /* fibonacci.png */; };
+		039F7F641EB8A0240039438E /* Brainloller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F7F5D1EB879550039438E /* Brainloller.swift */; };
 		03AC7DA71EB7C58F00298CDB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AC7DA61EB7C58F00298CDB /* main.swift */; };
 		03AC7DB41EB7C5B500298CDB /* BrainfuckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AC7DB31EB7C5B500298CDB /* BrainfuckTests.swift */; };
 		03AC7DBA1EB7C5E500298CDB /* Brainfuck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AC7DB91EB7C5E500298CDB /* Brainfuck.swift */; };
@@ -26,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		039F7F5D1EB879550039438E /* Brainloller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brainloller.swift; sourceTree = "<group>"; };
+		039F7F621EB89F460039438E /* fibonacci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fibonacci.png; sourceTree = "<group>"; };
 		03AC7DA31EB7C58F00298CDB /* Brainfuck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Brainfuck; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AC7DA61EB7C58F00298CDB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		03AC7DB11EB7C5B500298CDB /* BrainfuckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainfuckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				03AC7DB91EB7C5E500298CDB /* Brainfuck.swift */,
+				039F7F5D1EB879550039438E /* Brainloller.swift */,
 				03AC7DA61EB7C58F00298CDB /* main.swift */,
 			);
 			path = Brainfuck;
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				03AC7DB31EB7C5B500298CDB /* BrainfuckTests.swift */,
+				039F7F621EB89F460039438E /* fibonacci.png */,
 				03AC7DB51EB7C5B500298CDB /* Info.plist */,
 			);
 			path = BrainfuckTests;
@@ -170,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039F7F631EB89F460039438E /* fibonacci.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039F7F5E1EB879550039438E /* Brainloller.swift in Sources */,
 				03AC7DBA1EB7C5E500298CDB /* Brainfuck.swift in Sources */,
 				03AC7DA71EB7C58F00298CDB /* main.swift in Sources */,
 			);
@@ -189,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039F7F641EB8A0240039438E /* Brainloller.swift in Sources */,
 				03AC7DBB1EB7C5E500298CDB /* Brainfuck.swift in Sources */,
 				03AC7DB41EB7C5B500298CDB /* BrainfuckTests.swift in Sources */,
 			);

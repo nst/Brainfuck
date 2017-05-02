@@ -48,22 +48,32 @@ func f4() {
             
             if let putByte = try b.step() {
                 print(" PUT: " + String(format: "%02X", putByte))
-//                let s = Character(UnicodeScalar(putByte))
-//                print(s, separator: "", terminator: "")
+                //                let s = Character(UnicodeScalar(putByte))
+                //                print(s, separator: "", terminator: "")
             }
         }
         
         print("------------------------------------------------------------------------------------")
         b.printExecutionSummary()
         
-//        print(b.outputString())
+        //        print(b.outputString())
         
     } catch let e {
         print(e)
     }
 }
 
+func f5() {
+    let bl = try! Brainloller(imagePath: "/tmp/fibonacci.png")
+    let s1 = bl.brainfuck()
+    let bf = try! Brainfuck(s1)
+    let s2 = try! bf.run()
+    print(s2)
+}
+
 f1()
 f2()
 f3()
 f4()
+
+//f5()

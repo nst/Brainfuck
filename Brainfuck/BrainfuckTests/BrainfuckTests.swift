@@ -46,7 +46,7 @@ class BrainfuckTests: XCTestCase {
     
     func testPrograms() {
         XCTAssertEqual(bfToBuffer("+ asdasdas +++."), [4])
-
+        
         XCTAssertEqual(bfToBuffer("++++."), [4])
         
         let helloWorldSingleLoop = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>."
@@ -127,6 +127,24 @@ class BrainfuckTests: XCTestCase {
                 print(e)
                 XCTFail()
             }
+        }
+    }
+    
+    func testBrainloller() {
+        let bundle = Bundle(for: type(of: self))
+        guard let path = bundle.pathForImageResource("fibonacci") else {
+            XCTFail()
+            return
+        }
+        
+        do {
+            let b = try Brainloller(imagePath: path)
+            let s = b.brainfuck()
+            
+            XCTAssertEqual(s, "++++++++++++++++++++++++++++++++++++++++++++>++++++++++++++++++++++++++++++++>++++++++++++++++>>+<<[>>>>++++++++++<<[->+>-[>+>>]>[+[-<+>]>+>>]<<<<<<]>[<+>-]>[-]>>>++++++++++<[->-[>+>>]>[+[-<+>]>+>>]<<<<<]>[-]>>[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]<[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]<<<++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<<.>.>>[>>+<<-]>[>+<<+>-]>[<+>-]<<<-]<<++...")
+        } catch let e {
+            print(e)
+            XCTFail()
         }
     }
 }

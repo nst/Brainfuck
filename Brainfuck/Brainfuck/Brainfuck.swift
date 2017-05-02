@@ -189,7 +189,7 @@ extension Brainfuck {
         print("    HEX: \(s)")
         print("    STR: \(outputString())")
     }
-
+    
     func outputBuffer() -> [UInt8] {
         return output
     }
