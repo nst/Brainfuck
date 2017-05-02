@@ -33,8 +33,8 @@ do {
     let b = try Brainfuck(helloWorld)
     
     while b.canRun() {
-        if let s = try b.step() {
-            print(s)
+        if let byte = try b.step() {
+            print(byte)
         }
     }
 } catch let e {
