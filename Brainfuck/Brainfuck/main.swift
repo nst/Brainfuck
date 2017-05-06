@@ -2,7 +2,7 @@
 //  main.swift
 //  Brainfuck
 //
-//  Created by nst on 01.05.17.
+//  Created by Nicolas Seriot on 01.05.17.
 //  Copyright © 2017 Nicolas Seriot. All rights reserved.
 //
 
@@ -83,7 +83,7 @@ func f6() {
     let bl = try! Braincopter(imagePath: path)
     let (_, s1) = bl.brainfuck()
     print(s1)
-    
+
     let bf = try! Brainfuck(s1)
     let s2 = try! bf.run()
     print(s2)

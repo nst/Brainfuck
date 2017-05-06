@@ -2,7 +2,7 @@
 //  BrainfuckTests.swift
 //  BrainfuckTests
 //
-//  Created by nst on 01.05.17.
+//  Created by Nicolas Seriot on 01.05.17.
 //  Copyright © 2017 Nicolas Seriot. All rights reserved.
 //
 

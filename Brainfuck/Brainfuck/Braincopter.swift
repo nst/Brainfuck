@@ -2,9 +2,11 @@
 //  Braincopter.swift
 //  Brainfuck
 //
-//  Created by nst on 06.05.17.
+//  Created by Nicolas Seriot on 06.05.17.
 //  Copyright © 2017 Nicolas Seriot. All rights reserved.
 //
+
+// https://esolangs.org/wiki/Braincopter
 
 import Foundation
 

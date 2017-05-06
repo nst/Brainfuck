@@ -7,7 +7,6 @@
 //
 
 // https://esolangs.org/wiki/Brainloller
-// https://esolangs.org/wiki/Braincopter
 
 import AppKit
 
@@ -191,7 +190,7 @@ class Brainloller: NSObject {
         }
         
         // trace exec coordinates
-        
+
         c.setStrokeColor(strikeColor.cgColor);
         
         c.setLineCap(.square)
@@ -206,9 +205,9 @@ class Brainloller: NSObject {
                 c.addLine(to: CGPoint(x: x, y: y))
             }
         }
-        
+ 
         c.strokePath()
-        
+
         c.restoreGState()
         
         guard let data = imageRep.representation(using: .PNG, properties: [:]) else {
