@@ -80,7 +80,7 @@ func f5() {
 
 func f6() {
     let path = "/Users/nst/Desktop/braincopter1.png"
-    let bl = try! Brainloller(imagePath: path, useBraincopter: true)
+    let bl = try! Braincopter(imagePath: path)
     let (_, s1) = bl.brainfuck()
     print(s1)
     

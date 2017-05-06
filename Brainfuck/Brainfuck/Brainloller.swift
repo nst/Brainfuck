@@ -55,15 +55,13 @@ class Brainloller: NSObject {
     
     var bitmap : NSBitmapImageRep
     var direction : Direction = .east
-    var useBraincopter = false
     
-    init(imagePath: String, useBraincopter: Bool = false) throws {
+    init(imagePath: String) throws {
         guard let image = NSImage(byReferencingFile: imagePath) else { throw BLError.CannotReadPath }
         guard let tiffData = image.tiffRepresentation else { throw BLError.CannotGetImageData }
         guard let bitmapRep = NSBitmapImageRep(data: tiffData) else { throw BLError.CannotGetImageBitmap }
         
         self.bitmap = bitmapRep
-        self.useBraincopter = useBraincopter
     }
     
     func rgbComponents(color c: NSColor) -> (r: UInt8, g: UInt8, b: UInt8) {
@@ -76,7 +74,7 @@ class Brainloller: NSObject {
         return (r,g,b)
     }
     
-    func readBrainfuckInstruction(r: UInt8, g: UInt8, b:UInt8) -> String? {
+    func readInstruction(r: UInt8, g: UInt8, b:UInt8) -> String? {
         
         switch (r,g,b) {
         case (255,  0,  0): // red
@@ -104,36 +102,6 @@ class Brainloller: NSObject {
         }
     }
     
-    func readBraincopterInstruction(r: UInt8, g: UInt8, b:UInt8) -> String? {
-        
-        let command = (65536 * Int(r) + 256 * Int(g) + Int(b)) % 11
-        
-        switch command {
-        case 0:
-            return ">"
-        case 1:
-            return "<"
-        case 2:
-            return "+"
-        case 3:
-            return "-"
-        case 4:
-            return "."
-        case 5:
-            return ","
-        case 6:
-            return "["
-        case 7:
-            return "]"
-        case 8:
-            return "CW"
-        case 9:
-            return "CCW"
-        default:
-            return nil
-        }
-    }
-    
     func brainfuck() -> (coordinates: [(x: Int, y: Int)], brainfuck: String) {
         
         var x : Int = 0
@@ -149,9 +117,7 @@ class Brainloller: NSObject {
             
             let (r,g,b) = rgbComponents(color: color)
             
-            let readInstructions = useBraincopter ? readBraincopterInstruction : readBrainfuckInstruction
-            
-            if let i = readInstructions((r,g,b)) {
+            if let i = readInstruction(r: r, g: g, b: b) {
                 switch i {
                 case "CW":
                     self.direction.rotateClockwise()
