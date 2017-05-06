@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		038B11891EBE0EBF00C2F452 /* braincopter1.png in Resources */ = {isa = PBXBuildFile; fileRef = 038B11871EBE0EBF00C2F452 /* braincopter1.png */; };
+		038B118A1EBE0EBF00C2F452 /* braincopter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 038B11881EBE0EBF00C2F452 /* braincopter2.png */; };
 		039F7F5E1EB879550039438E /* Brainloller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F7F5D1EB879550039438E /* Brainloller.swift */; };
 		039F7F631EB89F460039438E /* fibonacci.png in Resources */ = {isa = PBXBuildFile; fileRef = 039F7F621EB89F460039438E /* fibonacci.png */; };
 		039F7F641EB8A0240039438E /* Brainloller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039F7F5D1EB879550039438E /* Brainloller.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		038B11871EBE0EBF00C2F452 /* braincopter1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = braincopter1.png; sourceTree = "<group>"; };
+		038B11881EBE0EBF00C2F452 /* braincopter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = braincopter2.png; sourceTree = "<group>"; };
 		039F7F5D1EB879550039438E /* Brainloller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brainloller.swift; sourceTree = "<group>"; };
 		039F7F621EB89F460039438E /* fibonacci.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fibonacci.png; sourceTree = "<group>"; };
 		03AC7DA31EB7C58F00298CDB /* Brainfuck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Brainfuck; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +94,8 @@
 			children = (
 				03AC7DB31EB7C5B500298CDB /* BrainfuckTests.swift */,
 				039F7F621EB89F460039438E /* fibonacci.png */,
+				038B11871EBE0EBF00C2F452 /* braincopter1.png */,
+				038B11881EBE0EBF00C2F452 /* braincopter2.png */,
 				03AC7DB51EB7C5B500298CDB /* Info.plist */,
 			);
 			path = BrainfuckTests;
@@ -177,7 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038B118A1EBE0EBF00C2F452 /* braincopter2.png in Resources */,
 				039F7F631EB89F460039438E /* fibonacci.png in Resources */,
+				038B11891EBE0EBF00C2F452 /* braincopter1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

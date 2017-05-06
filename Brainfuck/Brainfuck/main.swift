@@ -68,7 +68,7 @@ func f5() {
     let bl = try! Brainloller(imagePath: path)
     let (coords, s1) = bl.brainfuck()
     print(s1)
-
+    
     let outPath = "/Users/nst/Desktop/out.png"
     bl.magnifiedProgramWithTrace(programPath: path, outPath: outPath, coordinates: coords)
     
@@ -78,9 +78,21 @@ func f5() {
     print(s2)
 }
 
+func f6() {
+    let path = "/Users/nst/Desktop/braincopter1.png"
+    let bl = try! Brainloller(imagePath: path, useBraincopter: true)
+    let (_, s1) = bl.brainfuck()
+    print(s1)
+    
+    let bf = try! Brainfuck(s1)
+    let s2 = try! bf.run()
+    print(s2)
+}
+
 f1()
 f2()
 f3()
 f4()
 
 //f5()
+//f6()
