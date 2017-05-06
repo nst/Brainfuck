@@ -12,7 +12,7 @@ import AppKit
 
 class Brainloller: NSObject {
     
-    enum Heading {
+    enum Direction {
         case north
         case east
         case south
@@ -53,7 +53,7 @@ class Brainloller: NSObject {
     }
     
     var bitmap : NSBitmapImageRep
-    var heading : Heading = .east
+    var direction : Direction = .east
     
     init(imagePath: String) throws {
         guard let image = NSImage(byReferencingFile: imagePath) else { throw BLError.CannotReadPath }
@@ -106,23 +106,27 @@ class Brainloller: NSObject {
         }
     }
     
-    func brainfuck() -> String {
+    func brainfuck() -> (coordinates: [(x: Int, y: Int)], brainfuck: String) {
         
         var x : Int = 0
         var y : Int = 0
         
         var s = ""
         
+        var coords : [(x:Int, y:Int)] = []
+        
         while let color = bitmap.colorAt(x: x, y: y) {
+            
+            coords += [(x: x, y: y)]
             
             let (r,g,b) = rgbComponents(color: color)
             
             if let i = readInstruction(r: r, g: g, b: b) {
                 switch i {
                 case "CW":
-                    self.heading.rotateClockwise()
+                    self.direction.rotateClockwise()
                 case "CCW":
-                    self.heading.rotateCounterClockwise()
+                    self.direction.rotateCounterClockwise()
                 default:
                     s += i
                 }
@@ -130,10 +134,97 @@ class Brainloller: NSObject {
                 print("-- [\(x),\(y)] ignore (\(r),\(g),\(b))")
             }
             
-            x += heading.pixels().x
-            y += heading.pixels().y
+            x += direction.pixels().x
+            y += direction.pixels().y
+            
+            //print("\(x),\(y)")
         }
         
-        return s
+        return (coords, s)
+    }
+    
+    func magnifiedProgramWithTrace(programPath: String, outPath: String, coordinates: [(x: Int, y: Int)]) {
+        
+        let FACTOR = 10
+        
+        let WIDTH = Int(self.bitmap.size.width) * FACTOR
+        let HEIGHT = Int(self.bitmap.size.height) * FACTOR
+        
+        let imageRep = NSBitmapImageRep(
+            bitmapDataPlanes:nil,
+            pixelsWide: WIDTH,
+            pixelsHigh: HEIGHT,
+            bitsPerSample:8,
+            samplesPerPixel:4,
+            hasAlpha:true,
+            isPlanar:false,
+            colorSpaceName:NSDeviceRGBColorSpace,
+            bytesPerRow: WIDTH * 4,
+            bitsPerPixel:32)!
+        
+        let nsGraphicContext = NSGraphicsContext(bitmapImageRep: imageRep)!
+        
+        let c = nsGraphicContext.cgContext
+        
+        NSGraphicsContext.setCurrent(nsGraphicContext)
+        
+        c.setAllowsAntialiasing(false)
+        
+        // makes coordinates start upper left
+        c.translateBy(x: 0, y: CGFloat(HEIGHT))
+        c.scaleBy(x: 1.0, y: -1.0)
+        
+        let strikeColor = NSColor.black
+        
+        c.saveGState()
+                
+        // align to the pixel grid
+        c.translateBy(x: 0.5, y: 0.5)
+        
+        // copy program but magnified
+        
+        for y in 0..<Int(self.bitmap.size.height) {
+            for x in 0..<Int(self.bitmap.size.width) {
+                let y_ = y * FACTOR
+                let x_ = x * FACTOR
+                let c = self.bitmap.colorAt(x: x, y: y)!
+                c.setFill()
+                let rect = NSMakeRect(CGFloat(x_), CGFloat(y_), CGFloat(FACTOR), CGFloat(FACTOR))
+                NSBezierPath.fill(rect)
+            }
+        }
+        
+        // trace exec coordinates
+        
+        c.setStrokeColor(strikeColor.cgColor);
+        
+        c.setLineCap(.square)
+
+        for (i,coords) in coordinates.enumerated() {
+            let x = coords.x * FACTOR + FACTOR / 2
+            let y = coords.y * FACTOR + FACTOR / 2
+            
+            if i == 0 {
+                c.move(to: CGPoint(x: x, y: y))
+            } else {
+                c.addLine(to: CGPoint(x: x, y: y))
+            }
+        }
+        
+        c.strokePath()
+        
+        c.restoreGState()
+        
+        guard let data = imageRep.representation(using: .PNG, properties: [:]) else {
+            print("\(#file) \(#function) cannot get PNG data from bitmap")
+            return
+        }
+        
+        do {
+            try data.write(to: URL(fileURLWithPath: outPath), options: [])
+        } catch let e {
+            print(e)
+        }
+
     }
 }

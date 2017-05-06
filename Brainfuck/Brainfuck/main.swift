@@ -64,10 +64,17 @@ func f4() {
 }
 
 func f5() {
-    let bl = try! Brainloller(imagePath: "/tmp/fibonacci.png")
-    let s1 = bl.brainfuck()
+    let path = "/tmp/x.png"
+    let bl = try! Brainloller(imagePath: path)
+    let (coords, s1) = bl.brainfuck()
+    print(s1)
+
+    let outPath = "/Users/nst/Desktop/out.png"
+    bl.magnifiedProgramWithTrace(programPath: path, outPath: outPath, coordinates: coords)
+    
     let bf = try! Brainfuck(s1)
     let s2 = try! bf.run()
+    print(coords)
     print(s2)
 }
 
