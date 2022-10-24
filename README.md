@@ -4,7 +4,7 @@
 
 It comes with unit tests and tracing / debuging functions.
 
-It also comes with a [Brainloller](https://esolangs.org/wiki/Brainloller) reader.
+It also comes with [Brainloller](https://esolangs.org/wiki/Brainloller) and [Braincopter](https://esolangs.org/wiki/Braincopter) readers.
 
 Brainfuck commands:
 
