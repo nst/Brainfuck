@@ -78,7 +78,7 @@ class Brainfuck: NSObject {
         self.data = Array(repeating: 0, count: dataSize)
         
         // 2. sanitize instructions
-        self.instructions = s.characters.flatMap { Instruction(rawValue:$0) }
+        self.instructions = s.compactMap { Instruction(rawValue:$0) }
         
         // 3. store user input
         self.input = [UInt8](userInput.utf8)

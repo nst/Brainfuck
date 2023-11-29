@@ -153,7 +153,7 @@ class Brainloller: NSObject {
             samplesPerPixel:4,
             hasAlpha:true,
             isPlanar:false,
-            colorSpaceName:NSDeviceRGBColorSpace,
+            colorSpaceName:NSColorSpaceName.deviceRGB,
             bytesPerRow: WIDTH * 4,
             bitsPerPixel:32)!
         
@@ -161,7 +161,7 @@ class Brainloller: NSObject {
         
         let c = nsGraphicContext.cgContext
         
-        NSGraphicsContext.setCurrent(nsGraphicContext)
+        NSGraphicsContext.current = nsGraphicContext
         
         c.setAllowsAntialiasing(false)
         
@@ -210,7 +210,7 @@ class Brainloller: NSObject {
 
         c.restoreGState()
         
-        guard let data = imageRep.representation(using: .PNG, properties: [:]) else {
+        guard let data = imageRep.representation(using: .png, properties: [:]) else {
             print("\(#file) \(#function) cannot get PNG data from bitmap")
             return
         }
